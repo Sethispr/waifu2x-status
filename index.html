@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="utf-8">
+    <title>waifu2x status</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Tailwind for shadcn style utility classes -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-S+oQwTqFJ4iGhn8T7PZV5zJuW0bq5PZtO0ZQ9KcBYVqXyK5v4dHcx1w7Qp+v8sIuJsQXK9DV5R8pAqY7C9YxAQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body class="bg-neutral-950 text-neutral-100 antialiased">
+    <div class="min-h-screen flex items-center justify-center px-4">
+      <div
+        class="w-full max-w-md rounded-xl border border-neutral-800 bg-neutral-900/80 shadow-lg backdrop-blur-md"
+      >
+        <div class="flex items-center justify-between px-4 py-3 border-b border-neutral-800">
+          <div class="flex items-center gap-2">
+            <div class="h-7 w-7 rounded-full bg-emerald-500/10 flex items-center justify-center">
+              <i class="fa-solid fa-image text-emerald-400 text-sm"></i>
+            </div>
+            <div class="flex flex-col">
+              <span class="text-sm font-medium tracking-tight">
+                waifu2x status
+              </span>
+              <span class="text-[11px] text-neutral-400">
+                checks main site in real time
+              </span>
+            </div>
+          </div>
+          <button
+            id="refreshButton"
+            class="rounded-lg px-3 py-1.5 text-xs font-medium bg-neutral-800 text-neutral-100 hover:bg-neutral-700 active:bg-neutral-600 transition-colors flex items-center gap-1"
+          >
+            <i class="fa-solid fa-rotate-right text-[11px]"></i>
+            <span>refresh</span>
+          </button>
+        </div>
+
+        <div class="p-4 space-y-4">
+          <div
+            id="statusCard"
+            class="rounded-lg border border-neutral-800 bg-neutral-900 px-4 py-3 flex items-center gap-3"
+          >
+            <div
+              id="statusIconWrapper"
+              class="h-9 w-9 rounded-full flex items-center justify-center bg-neutral-800 text-neutral-300"
+            >
+              <i id="statusIcon" class="fa-solid fa-circle-notch fa-spin text-sm"></i>
+            </div>
+            <div class="flex-1">
+              <div id="statusLabel" class="text-xs font-semibold uppercase tracking-[0.18em] text-neutral-400">
+                checking
+              </div>
+              <div id="statusText" class="text-sm mt-0.5 text-neutral-100">
+                waiting for response from waifu2x
+              </div>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-2 text-[11px] text-neutral-300">
+            <a
+              href="https://www.waifu2x.net/index.html"
+              target="_blank"
+              class="group flex items-center justify-between rounded-lg border border-neutral-800 bg-neutral-900 px-3 py-2 hover:bg-neutral-800 transition-colors"
+            >
+              <span class="truncate">
+                open waifu2x
+              </span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-neutral-500 group-hover:text-neutral-300"></i>
+            </a>
+            <a
+              href="https://unlimited.waifu2x.net"
+              target="_blank"
+              class="group flex items-center justify-between rounded-lg border border-neutral-800 bg-neutral-900 px-3 py-2 hover:bg-neutral-800 transition-colors"
+            >
+              <span class="truncate">
+                open unlimited waifu2x
+              </span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-neutral-500 group-hover:text-neutral-300"></i>
+            </a>
+          </div>
+
+          <div class="grid grid-cols-3 gap-2 text-[11px] text-neutral-300">
+            <a
+              href="https://discord.gg/GEace2e8Wg"
+              target="_blank"
+              class="flex items-center justify-center gap-1 rounded-lg border border-neutral-800 bg-neutral-900 px-2 py-2 hover:bg-neutral-800 transition-colors"
+            >
+              <i class="fa-brands fa-discord text-xs text-indigo-300"></i>
+              <span class="truncate">
+                blair discord
+              </span>
+            </a>
+            <a
+              href="https://sethispr.github.io/blair-utils/"
+              target="_blank"
+              class="flex items-center justify-center gap-1 rounded-lg border border-neutral-800 bg-neutral-900 px-2 py-2 hover:bg-neutral-800 transition-colors"
+            >
+              <i class="fa-solid fa-box-open text-xs text-emerald-300"></i>
+              <span class="truncate">
+                blair studio
+              </span>
+            </a>
+            <a
+              href="https://github.com/nagadomi/waifu2x/issues/197"
+              target="_blank"
+              class="flex items-center justify-center gap-1 rounded-lg border border-neutral-800 bg-neutral-900 px-2 py-2 hover:bg-neutral-800 transition-colors"
+            >
+              <i class="fa-brands fa-github text-xs"></i>
+              <span class="truncate">
+                github
+              </span>
+            </a>
+          </div>
+
+          <div class="flex items-center justify-between text-[11px] text-neutral-500">
+            <span id="lastCheckedText">
+              last check not yet done
+            </span>
+            <span id="hintText" class="text-[10px]">
+              using proxy to bypass cors limitations
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>
