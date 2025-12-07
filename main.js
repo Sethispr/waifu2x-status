@@ -10,8 +10,8 @@ const PROXY_PREFIX = "https://api.allorigins.win/raw?url=";
 const WAIFU_URL = PROXY_PREFIX + TARGET_URL;
 
 // webhook parts concatenated to reduce simple scraping
-const WEBHOOK_PART1 = "https://discord.com/api/webhooks/1447052066479407164/";
-const WEBHOOK_PART2 = "SpC1MECoLsQvsjC8rviwF3vURG40gR1lgNz0oZ5osWw0Yq8-Rs0zb8CCNSc0tb2IUiTF";
+const WEBHOOK_PART1 = "https://discord.com/api/webhooks/1447056987803090984/";
+const WEBHOOK_PART2 = "etGo7nY1M0LhazHEX5I80D2UpryG7fyOr0VnNGR0TtP6g9mIx475VNQoKe7oFUAIJh4F";
 const DISCORD_WEBHOOK = WEBHOOK_PART1 + WEBHOOK_PART2;
 
 // how often to auto check in milliseconds
