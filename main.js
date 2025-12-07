@@ -154,7 +154,7 @@ async function sendDiscordEmbed(state) {
   console.warn("discord webhook send failed after retries");
 }
 
-// wrapper to handle state change actions
+ // wrapper to handle state change actions
 async function handleStateChange(state, message) {
   if (state === "up") {
     setUpState();
@@ -167,17 +167,18 @@ async function handleStateChange(state, message) {
     document.title = "waifu2x status unknown";
   }
 
-  // always attempt to notify webhook each check to improve delivery consistency
-  if (state === "down") {
+  // send webhook only on meaningful transitions
+  // send when it becomes down
+  if (state === "down" && lastState !== "down") {
     sendDiscordEmbed("down");
-  } else if (state === "up") {
-    sendDiscordEmbed("up");
-  } else {
-    // still try to notify unknowns
-    sendDiscordEmbed("unknown");
   }
+  // send when it recovers from down to up
+  else if (state === "up" && lastState === "down") {
+    sendDiscordEmbed("up");
+  }
+  // do not send for unknown or repeated states
 
-  // keep lastState for potential UI logic but do not gate notifications
+  // update lastState after processing transition logic
   lastState = state;
 }
 
@@ -207,6 +208,7 @@ async function checkStatus() {
       lower.includes("error") ||
       lower.includes("not found") ||
       lower.includes("blocked by") ||
+      lower.includes("unknown") ||
       lower.includes("cors") ||
       lower.includes("access denied") ||
       lower.includes("forbidden");
