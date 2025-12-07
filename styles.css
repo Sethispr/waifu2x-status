@@ -1,0 +1,11 @@
+/* minimal tweaks to keep layout tight on mobile */
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* prevent accidental scroll bounce when embedded */
+body {
+  overscroll-behavior: contain;
+}
